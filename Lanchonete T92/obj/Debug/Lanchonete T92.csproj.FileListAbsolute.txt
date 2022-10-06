@@ -1,10 +1,13 @@
+C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\bin\Debug\Imagens\login.png
+C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\bin\Debug\Imagens\logo.png
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\bin\Debug\Lanchonete T92.exe.config
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\bin\Debug\Lanchonete T92.exe
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\bin\Debug\Lanchonete T92.pdb
-C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\obj\Debug\Lanchonete T92.csproj.AssemblyReference.cache
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\obj\Debug\Lanchonete_T92.LoginView.resources
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\obj\Debug\Lanchonete_T92.Properties.Resources.resources
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\obj\Debug\Lanchonete T92.csproj.GenerateResource.cache
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\obj\Debug\Lanchonete T92.csproj.CoreCompileInputs.cache
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\obj\Debug\Lanchonete T92.exe
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\obj\Debug\Lanchonete T92.pdb
+C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\obj\Debug\Lanchonete T92.csproj.AssemblyReference.cache
+C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\bin\Debug\Imagens\fundo_bnts.png

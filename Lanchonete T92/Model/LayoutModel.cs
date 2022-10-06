@@ -53,7 +53,7 @@ namespace Lanchonete_T92
     class LayoutModel
     {
         // Atributos
-        public int[] corFundoTelas = { 255, 60, 0 };
+        public int[] corFundoTelas = { 255, 255, 255 };
         public int[] corTextoTelas = { 0, 0, 255 };
 
         // Métodos
