@@ -67,6 +67,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Fonts\Barlow-Regular.ttf" />
+    <None Include="Fonts\InterTight-Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -88,6 +90,7 @@
     <Content Include="Imagens\fundo_bnts.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Imagens\fundo_form.png" />
     <Content Include="Imagens\login.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

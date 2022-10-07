@@ -42,6 +42,21 @@ namespace Lanchonete_T92
 
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void usuarioLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
         /*
           
             Os códigos abaixo são criados quando clicamos duas vezes em um componente da tela.
