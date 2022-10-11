@@ -25,7 +25,8 @@ namespace Lanchonete_T92
             Debug.WriteLine("A tela foi montada.");
 
             // chamamos a função/método da classe LoginViewController.cs
-
+            // Instanciar um objeto da classe
+            LoginController loginC = new LoginController();
 
             InitializeComponent();
 
@@ -36,6 +37,8 @@ namespace Lanchonete_T92
             login.MontaLogin( this );
 
         }
+
+
 
         private void entrarBtn_Click(object sender, EventArgs e)
         {
@@ -53,6 +56,11 @@ namespace Lanchonete_T92
         }
 
         private void usuarioLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }
