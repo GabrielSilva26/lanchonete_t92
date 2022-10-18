@@ -38,6 +38,7 @@ namespace Lanchonete_T92
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.voltarBtn = new System.Windows.Forms.Button();
             this.senhaTxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -133,6 +134,7 @@ namespace Lanchonete_T92
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.usuarioTxt);
             this.panel1.Controls.Add(this.usuarioLabel);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -145,6 +147,7 @@ namespace Lanchonete_T92
             // panel2
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel2.Controls.Add(this.voltarBtn);
             this.panel2.Controls.Add(this.senhaTxt);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.pictureBox2);
@@ -154,6 +157,27 @@ namespace Lanchonete_T92
             this.panel2.Size = new System.Drawing.Size(405, 202);
             this.panel2.TabIndex = 6;
             this.panel2.Visible = false;
+            // 
+            // voltarBtn
+            // 
+            this.voltarBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.voltarBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.voltarBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("voltarBtn.BackgroundImage")));
+            this.voltarBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.voltarBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.voltarBtn.FlatAppearance.BorderSize = 0;
+            this.voltarBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.voltarBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.voltarBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.voltarBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.voltarBtn.ForeColor = System.Drawing.Color.White;
+            this.voltarBtn.Location = new System.Drawing.Point(71, 128);
+            this.voltarBtn.Name = "voltarBtn";
+            this.voltarBtn.Size = new System.Drawing.Size(130, 50);
+            this.voltarBtn.TabIndex = 5;
+            this.voltarBtn.Text = "Voltar";
+            this.voltarBtn.UseVisualStyleBackColor = false;
+            this.voltarBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // senhaTxt
             // 
@@ -204,7 +228,7 @@ namespace Lanchonete_T92
             this.entraBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.entraBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.entraBtn.ForeColor = System.Drawing.Color.White;
-            this.entraBtn.Location = new System.Drawing.Point(135, 116);
+            this.entraBtn.Location = new System.Drawing.Point(207, 128);
             this.entraBtn.Name = "entraBtn";
             this.entraBtn.Size = new System.Drawing.Size(130, 50);
             this.entraBtn.TabIndex = 2;
@@ -249,6 +273,7 @@ namespace Lanchonete_T92
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button entraBtn;
+        private System.Windows.Forms.Button voltarBtn;
     }
 }
 
