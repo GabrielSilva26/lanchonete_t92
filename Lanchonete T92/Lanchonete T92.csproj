@@ -72,6 +72,7 @@
     </Compile>
     <None Include="Fonts\Barlow-Regular.ttf" />
     <None Include="Fonts\InterTight-Regular.ttf" />
+    <None Include="Imagens\Icones\Thumbs.db" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -91,6 +92,33 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Imagens\fundo_form.png" />
+    <Content Include="Imagens\Icones\aumentar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagens\Icones\botao-ligar-desligar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagens\Icones\botao-ligar-desligar_d.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagens\Icones\caracteristicas.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagens\Icones\compras-online.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagens\Icones\estoque-pronto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagens\Icones\imagem-do-usuario-com-fundo-preto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagens\Icones\minimizar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagens\Icones\sair.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Imagens\login.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
