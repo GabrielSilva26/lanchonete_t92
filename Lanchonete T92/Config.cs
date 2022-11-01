@@ -22,6 +22,23 @@
 
     No C# tudo é PRIVATE (privado).
 
+    Estruturas de Decisão
+    
+        if (condição - comparação) {
+            // códigos a executar se verdadeiro
+        }
+        else
+        {
+            // códigos a executar se a condição for falsa
+        }
+
+        switch( variável )
+        {
+            case "valor" : // código a ser executado se verdadeiro
+            break;
+          default: // executado caso seja outro valor diferente dos mapeados    
+        }
+
 */
 
 using System.IO;
@@ -34,22 +51,60 @@ namespace Lanchonete_T92
     public static class Config
     {
         // Atributos - variáveis da classe é visível de qualquer membro da classe
-        
+
         // armazena o tema atual 0 claro / 1 escuro
         public static int tema = 0;
 
         // ler o tamanho do monitor do usuário
         public static int[] tamanhoTela =
-            { Screen.PrimaryScreen.Bounds.Width, 
+            { Screen.PrimaryScreen.Bounds.Width,
             Screen.PrimaryScreen.Bounds.Height };
 
         // armazena o caminho da instalação
         public static string caminho = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
+        // armzena nossas cores de fundo
+        public static int[,] corFundo = { { 253, 229, 210 }, { 38, 40, 51 } };
+
+        // armazena as imagens de fundo
+        private static string[,] imagens = { 
+            {
+                "login.png", 
+                "logo.png", 
+                "fundo_form.png"
+            }, 
+            {
+                "login_d.png", 
+                "logo_d.png", 
+                "fundo_form_d.png"
+            }
+        };
 
         public static void MostraMensagem(string texto)
         {
             MessageBox.Show( texto );
+        }
+
+        public static string CaminhosImagens( string imagem )
+        {
+            // estrutura de decisão
+            switch ( imagem )
+            {
+                case "lateral":
+                    return caminho = Path.Combine(caminho, "Imagens\\" + imagens[tema, 0]);
+                    break;
+
+                case "logo":
+                    return caminho = Path.Combine(caminho, "Imagens\\" + imagens[tema, 1]);
+                    break;
+
+                case "campos":
+                    return caminho = Path.Combine(caminho, "Imagens\\" + imagens[tema, 2]);
+                    break;
+
+                default: return caminho = "";
+            }
+
         }
     }
 }

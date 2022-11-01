@@ -48,7 +48,14 @@
   <ItemGroup>
     <Compile Include="Config.cs" />
     <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Controller\PrincipalController.cs" />
     <Compile Include="Model\LayoutModel.cs" />
+    <Compile Include="View\PrincipalView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PrincipalView.Designer.cs">
+      <DependentUpon>PrincipalView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +99,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Imagens\fundo_form.png" />
+    <Content Include="Imagens\fundo_form_d.png" />
     <Content Include="Imagens\Icones\aumentar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -113,6 +121,7 @@
     <Content Include="Imagens\Icones\imagem-do-usuario-com-fundo-preto.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Imagens\Icones\menu_d.png" />
     <Content Include="Imagens\Icones\minimizar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -122,9 +131,11 @@
     <Content Include="Imagens\login.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Imagens\login_d.png" />
     <Content Include="Imagens\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Imagens\logo_d.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
