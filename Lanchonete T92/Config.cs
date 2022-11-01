@@ -53,6 +53,8 @@ namespace Lanchonete_T92
         // Atributos - variáveis da classe é visível de qualquer membro da classe
 
         // armazena o tema atual 0 claro / 1 escuro
+        public static string caminhos; 
+
         public static int tema = 0;
 
         // ler o tamanho do monitor do usuário
@@ -71,12 +73,16 @@ namespace Lanchonete_T92
             {
                 "login.png", 
                 "logo.png", 
-                "fundo_form.png"
+                "fundo_form.png",
+                "config.png",
+                "sair.png"
             }, 
             {
                 "login_d.png", 
                 "logo_d.png", 
-                "fundo_form_d.png"
+                "fundo_form_d.png",
+                "config.png",
+                "sair.png"
             }
         };
 
@@ -91,18 +97,26 @@ namespace Lanchonete_T92
             switch ( imagem )
             {
                 case "lateral":
-                    return caminho = Path.Combine(caminho, "Imagens\\" + imagens[tema, 0]);
+                    return caminhos = Path.Combine(caminho, "Imagens\\" + imagens[tema, 0]);
                     break;
 
                 case "logo":
-                    return caminho = Path.Combine(caminho, "Imagens\\" + imagens[tema, 1]);
+                    return caminhos = Path.Combine(caminho, "Imagens\\" + imagens[tema, 1]);
                     break;
 
                 case "campos":
-                    return caminho = Path.Combine(caminho, "Imagens\\" + imagens[tema, 2]);
+                    return caminhos = Path.Combine(caminho, "Imagens\\" + imagens[tema, 2]);
                     break;
 
-                default: return caminho = "";
+                case "config":
+                    return caminhos = Path.Combine(caminho, "Imagens\\Icones\\" + imagens[tema, 3]);
+                    break;
+
+                case "sair":
+                    return caminhos = Path.Combine(caminho, "Imagens\\Icones\\" + imagens[tema, 4]);
+                    break;
+
+                default: return caminhos = "";
             }
 
         }
