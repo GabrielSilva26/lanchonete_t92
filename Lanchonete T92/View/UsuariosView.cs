@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace Lanchonete_T92
+{
+    public partial class UsuariosView : Form
+    {
+        public UsuariosView()
+        {
+            InitializeComponent();
+
+            UsuariosController usuariosC = new UsuariosController( this );
+        }
+    }
+}

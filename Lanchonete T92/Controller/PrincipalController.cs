@@ -20,9 +20,26 @@ namespace Lanchonete_T92
             this.form = form;
 
             FormataTela();
+            CriaBotoes();
             CriaPainelLateral();
             CriaLogo();
-            CriaBotoes();
+            ComponentePanel();
+
+
+
+
+
+
+            // Listeners (ouvintes) dos botões da tela
+            // O objeto deve ter um .Name para poder ser programado
+            // .Click - clique sobre o elemento
+            // .MouseHover - mouse sobre o elemento
+            // .MouseLeave - mouse sair de cima do elemento
+            // .MouseMove - quando o mouse se movimenta sobre o elemento
+            // .DoubleClick - clique duplo sobre o elemento
+            // .MouseDown - mouse pressionado sobre o elemento
+            form.Controls.Find("sairBtn", true)[0].Click += FazerLogOff;
+            form.Controls.Find("menuBtn", true)[0].Click += CarregaTelas;
 
         }
 
@@ -81,36 +98,109 @@ namespace Lanchonete_T92
 
         void CriaBotoes()
         {
-            Button configBtn = new Button();
-            Button sairBtn = new Button();
-
-            int tamanhoBtn = Convert.ToInt32(Config.tamanhoTela[0] * 0.02f);
             int posX = Convert.ToInt32(Config.tamanhoTela[0] * 0.97f);
+            int posX2 = Convert.ToInt32(Config.tamanhoTela[0] * 0.94f);
 
-            configBtn.Size = new Size(tamanhoBtn, tamanhoBtn);
+
+
+            Button configBtn = new Button();
+            PadronizaBotoes(configBtn);
+            configBtn.Location = new Point(posX2, 10);
             configBtn.BackgroundImage = Image.FromFile(Config.CaminhosImagens("config"));
-            configBtn.BackgroundImageLayout = ImageLayout.Zoom;
-            configBtn.FlatAppearance.BorderSize = 0;
-            configBtn.FlatStyle = FlatStyle.Flat;
-            configBtn.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            configBtn.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            configBtn.BackColor = Color.Transparent;
-            configBtn.Cursor = Cursors.Hand;
-            configBtn.Location = new Point(posX - 35, 10);
+            configBtn.Name = "configBtn"; // aplica um Name ao objeto
             form.Controls.Add(configBtn);
 
-            int exitBtn = Convert.ToInt32(Config.tamanhoTela[0] * 0.02f);
-            sairBtn.Size = new Size(exitBtn, exitBtn);
-            sairBtn.BackgroundImage = Image.FromFile(Config.CaminhosImagens("sair"));
-            sairBtn.BackgroundImageLayout = ImageLayout.Zoom;
-            sairBtn.FlatAppearance.BorderSize = 0;
-            sairBtn.FlatStyle = FlatStyle.Flat;
-            sairBtn.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            sairBtn.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            sairBtn.BackColor = Color.Transparent;
-            sairBtn.Cursor = Cursors.Hand;
+
+
+            Button sairBtn = new Button();
+            PadronizaBotoes(sairBtn);
             sairBtn.Location = new Point(posX, 10);
+            sairBtn.BackgroundImage = Image.FromFile(Config.CaminhosImagens("sair"));
+            sairBtn.Name = "sairBtn";
             form.Controls.Add(sairBtn);
+
+
+
+            Button menuBtn = new Button();
+            PadronizaBotoes(menuBtn);
+            menuBtn.Location = new Point(10, 10);
+            menuBtn.BackgroundImage = Image.FromFile(Config.CaminhosImagens("menu"));
+            menuBtn.Name = "menuBtn";
+            form.Controls.Add(menuBtn);
+        }
+
+
+
+        void PadronizaBotoes(Button botao)
+        {
+            int tamanhoBtn = Convert.ToInt32(Config.tamanhoTela[0] * 0.02f);
+
+
+
+            botao.Size = new Size(tamanhoBtn, tamanhoBtn);
+            botao.BackgroundImageLayout = ImageLayout.Zoom;
+            botao.FlatAppearance.BorderSize = 0;
+            botao.FlatStyle = FlatStyle.Flat;
+            botao.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            botao.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            botao.BackColor = Color.Transparent;
+            botao.Cursor = Cursors.Hand;
+
+
+        }
+
+        void FazerLogOff(object disparador, EventArgs evento)
+        {
+            // ocultar a tela atual
+            form.Hide();
+
+            // Abrimos a tela de Login
+            LoginView loginV = new LoginView(); // criando o bjeto da tela de login
+            loginV.Show(); // exibe a tela criada 
+
+            //form.Close(); // encerra a tela e se for a única aberta encerra a aplicação
+        }
+
+        void ComponentePanel()
+        {
+            Panel componente = new Panel();
+            int largComponente = Convert.ToInt32(Config.tamanhoTela[0] * 0.7f);
+            int PosX = Convert.ToInt32(Config.tamanhoTela[0] * 0.3f);
+
+            componente.Size = new Size(largComponente, Config.tamanhoTela[1]);
+            componente.BackColor = Color.Transparent;
+            componente.Cursor = Cursors.Hand;
+
+            componente.Location = new Point(PosX, 0);
+            componente.Name = "tela";
+            componente.BringToFront();
+
+            form.Controls.Add(componente);
+        }
+
+        /// <summary>
+        /// Método que carrega as telas internas dentro do componente Panel nomeado como tela na PrincipalView.cs
+        /// </summary>
+        void CarregaTelas( object disparador, EventArgs evento )
+        {
+            // criar um objeto (instanciar)
+            // Tipos Básicos(variável/propriedade/atributo/parâmetros): int (valores inteiros), string (texto), bool(verdadeiro ou falso), char(apenas uma letra), enum, float, decimal
+
+            UsuariosView telaUsuarios = new UsuariosView(); // objeto
+
+            // Pegando o componente da tela
+            Panel tela = (Panel) form.Controls.Find("tela", true)[0];
+
+            // definimos para que a janela não suba na hierarquia do Win
+            telaUsuarios.TopLevel = false;
+
+            // puxamos a nova tela para a frente(empilhamento)
+            tela.BringToFront();
+
+            // carregando a tela no componente
+            tela.Controls.Add(telaUsuarios);
+
+            telaUsuarios.Show(); // exibe a tela
         }
     }
 }

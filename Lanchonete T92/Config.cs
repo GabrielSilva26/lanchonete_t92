@@ -75,16 +75,26 @@ namespace Lanchonete_T92
                 "logo.png", 
                 "fundo_form.png",
                 "config.png",
-                "sair.png"
+                "sair.png",
+                "menu.png"
             }, 
             {
                 "login_d.png", 
                 "logo_d.png", 
                 "fundo_form_d.png",
-                "config.png",
-                "sair.png"
+                "config_d.png",
+                "sair_d.png",
+                "menu_d.png"
             }
         };
+
+
+        // Credenciais do Banco de Dados
+        public static string servidorBD = "localhost";// nome ou IP
+        public static string portaBD = "3306"; // porta do servidor
+        public static string usuarioBD = "root";
+        public static string senhaBD = "";
+        public static string bancoBD = "lanchonete_t92";
 
         public static void MostraMensagem(string texto)
         {
@@ -114,6 +124,10 @@ namespace Lanchonete_T92
 
                 case "sair":
                     return caminhos = Path.Combine(caminho, "Imagens\\Icones\\" + imagens[tema, 4]);
+                    break;
+
+                case "menu":
+                    return caminhos = Path.Combine(caminho, "Imagens\\Icones\\" + imagens[tema, 5]);
                     break;
 
                 default: return caminhos = "";

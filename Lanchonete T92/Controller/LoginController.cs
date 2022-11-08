@@ -1,4 +1,4 @@
-﻿/*
+﻿    /*
     Classe que aplica as alterações, chamadas e controles da tela de Login (LoginView.cs)
     
     Propriedades / Atributos / Variáveis / Parâmetros
