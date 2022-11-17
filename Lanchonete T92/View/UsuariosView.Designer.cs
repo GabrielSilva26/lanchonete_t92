@@ -29,6 +29,7 @@ namespace Lanchonete_T92
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsuariosView));
             this.label1 = new System.Windows.Forms.Label();
             this.usuarioTxt = new System.Windows.Forms.TextBox();
             this.senhaTxt = new System.Windows.Forms.TextBox();
@@ -70,11 +71,14 @@ namespace Lanchonete_T92
             // 
             // UsuariosView
             // 
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(796, 419);
             this.Controls.Add(this.cadastrarBtn);
             this.Controls.Add(this.senhaTxt);
             this.Controls.Add(this.usuarioTxt);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.Name = "UsuariosView";
             this.ResumeLayout(false);
             this.PerformLayout();

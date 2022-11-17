@@ -47,3 +47,4 @@ C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\bin\Debug\
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\bin\Debug\Imagens\Icones\menu.png
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\bin\Debug\Imagens\Icones\menu_d.png
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\obj\Debug\Lanchonete_T92.UsuariosView.resources
+C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\bin\Debug\Imagens\fundoUsuarios.png

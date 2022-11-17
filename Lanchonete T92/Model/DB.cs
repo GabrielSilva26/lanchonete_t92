@@ -59,18 +59,18 @@ namespace Lanchonete_T92
 
         }
 
-        public bool InsereDados(string usuario, string senha )
+        public bool InsereDados(string campos, string valores, string tabela)
         {
-            string comandoSQL = "INSERT INTO usuarios (login, senha) VALUES ( '" + usuario + "', '" + senha + "')";
+            string comandoSQL = "INSERT INTO " + tabela + " (" + campos + ") VALUES ( " + valores + ")";
 
             if (RodaSQL(comandoSQL) != null )
             {
-                Debug.WriteLine("Dado Inserido");
+               MessageBox.Show("Dado Inserido com sucesso!");
                 return true;
             }
             else
             {
-                Debug.WriteLine("Erro ao Inserir");
+                MessageBox.Show("Erro ao Inserir os Dados!");
                 return false;
             }
         }
@@ -110,5 +110,15 @@ namespace Lanchonete_T92
                 return roda = null;
             }
             }
+        public MySqlCommand CriptografaSenha( string senha )
+        {
+            // No MYSQL temos as criptografias abaixo:
+            // AES_ENCRYPT( valor, chave ) / AES_DECRYPT(valor, chave)
+            // MD5 (valor)
+
+            string SQL = " SELECT( AES_ENCRYPT('" + senha + "', '" + Config.chaveCrypto + "' ) )";
+
+             return RodaSQL(SQL);
+        }
     }
 }
