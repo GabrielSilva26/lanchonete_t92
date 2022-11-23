@@ -145,7 +145,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Imagens\fundoUsuarios.png">
+    <Content Include="Imagens\fundoUsuarios.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Imagens\fundo_bnts.png">

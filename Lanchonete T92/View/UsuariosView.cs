@@ -21,5 +21,10 @@ namespace Lanchonete_T92
         {
 
         }
+
+        private void UsuariosView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

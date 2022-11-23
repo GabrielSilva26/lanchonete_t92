@@ -1,54 +1,38 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms; // importação dos componentes de tela win
+using MySql.Data; // importa as bibliotecas de acesso ao MySql
+using MySql.Data.MySqlClient;
 
 namespace Lanchonete_T92
 {
     class UsuariosController
     {
-        // criar atributos/propriedade
-        Form form;
+        Form form; // propriedade que armazena a tela UsuariosView
 
-        // criar o construtor da classe
+        // método construtor, executando automaticamente
 
-        public UsuariosController( Form form )
+        public UsuariosController(Form form)
         {
             this.form = form;
 
-            // ouvinte no botão
-            form.Controls.Find("cadastrarBtn", true)[0].Click += ChamaCadastro;
+            MessageBoxButtons botoes = MessageBoxButtons.YesNoCancel;
 
-            form.WindowState = FormWindowState.Maximized;
-
-            MessageBox.Show( form.Width.ToString() );
-            MessageBox.Show( form.Height.ToString() );
+            MostraMensagem("texto exibido", "título da caixinha", botoes);
         }
 
-        void ChamaCadastro( object objeto, EventArgs evento)
+        void MostraMensagem(string mensagem, string titulo, MessageBoxButtons botoes)
         {
-            string usuario = form.Controls.Find("usuarioTxt", true)[0].Text;
-            string senha = form.Controls.Find("senhaTxt", true)[0].Text;
-            
-            // Instanciamos a classe do DB
-            DB db = new DB();
+            MessageBox.Show(mensagem, titulo, botoes);
+        }
+
+        void ConectaBanco()
+        {
+            // objeto da classe de conexão com o MySQL
+            MySqlConnection conexao = new MySqlConnection
+                ("server=localhost;port=3306;database=lanchonete_t92;uid=root;passoword=");
 
 
-            // Criptogafamos a senha informada
-            MySqlCommand senhaCriptografada = db.CriptografaSenha(senha);
-
-            Debug.WriteLine(senhaCriptografada.ToString());
-
-            string campos = "login, senha";
-            string valores = " '"+ usuario +"', '"+ senha +"' ";
-            string tabela = "usuarios";
-
-            db.InsereDados(campos, valores, tabela);
-
+            // Abre a conexão com o banco
+            conexao.Open();
         }
     }
 }
