@@ -198,6 +198,9 @@ namespace Lanchonete_T92
             // removendo as bordas
             telaUsuarios.FormBorderStyle = FormBorderStyle.None;
 
+            // maximizando a tela carregada
+            telaUsuarios.WindowState = FormWindowState.Maximized;
+
             // puxamos a nova tela para a frente(empilhamento)
             tela.BringToFront();
 
