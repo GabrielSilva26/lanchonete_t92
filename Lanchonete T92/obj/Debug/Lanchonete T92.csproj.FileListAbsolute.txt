@@ -48,3 +48,7 @@ C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\bin\Debug\
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\bin\Debug\Imagens\Icones\menu_d.png
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\obj\Debug\Lanchonete_T92.UsuariosView.resources
 C:\Users\gabriel.asilva121\source\repos\lanchonete_t92\Lanchonete T92\bin\Debug\Imagens\fundoUsuarios.png
+C:\Users\Gabri\OneDrive\Área de Trabalho\lanchonete_t92\Lanchonete T92\obj\Debug\Lanchonete T92.csproj.AssemblyReference.cache
+C:\Users\Gabri\OneDrive\Área de Trabalho\lanchonete_t92\Lanchonete T92\obj\Debug\Lanchonete T92.csproj.SuggestedBindingRedirects.cache
+C:\Users\Gabri\OneDrive\Área de Trabalho\lanchonete_t92\Lanchonete T92\obj\Debug\Lanchonete T92.exe
+C:\Users\Gabri\OneDrive\Área de Trabalho\lanchonete_t92\Lanchonete T92\obj\Debug\Lanchonete T92.pdb

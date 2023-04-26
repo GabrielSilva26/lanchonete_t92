@@ -11,6 +11,7 @@ namespace Lanchonete_T92
     class UsuariosController
     {
         Form form;// propriedade que armazena a tela UsuariosView
+        DataGridView tab;
 
         MySqlConnection conexao = null;// armazena a conexão com o BD
 
@@ -83,19 +84,26 @@ namespace Lanchonete_T92
 
             CriaBotao("maisFoneBtn", 0.02f, 0.02f, 0.02f, 0.04f, "flowLayoutPanel1");
 
-            OrganizaCampos(); // cria a caixa organiza
+            OrganizaCampos();// cria a caixa organiza
 
-            CriaTextBox("tipo2Txt", 0.025f, 0.005f, 0.095f, "organiza");
-            CriaTextBox("emailTxt", 0.022f, 0.005f, 0.195f, "organiza");
-            CriaBotao("maisEmailBtn", 0.02f, 0.02f, 0.02f, 0f, "organiza");
+            CriaTextBox("tipo2Txt", 0.025f, 0.042f, 0.095f, "organiza");
+            CriaTextBox("emailTxt", 0.022f, 0.042f, 0.195f, "organiza");
+            CriaBotao("maisEmailBtn", 0.02f, 0.02f, 0.02f, 0.039f, "organiza");
 
             CriaFoto("foto", 0.09f, 0.125f, 0.044f, 0.0f, "organiza");
 
             CriaBotao("adicionaFoto", 0.09f, 0.125f, 0.025f, 0.0f, "organiza");
 
-
-
             CriaTabela();
+
+            // larg 0.075f / alt 0.075f / esq 0.026f / topo 0.05f
+            CriaBotao("salvaCadastro", 0.075f, 0.026f, 0.24f, 0.05f, "flowLayoutPanel1");
+
+            // larg 0.09f / alt 0.026f /esq 0.04f / topo 0.05f
+            CriaBotao("cancelaCadastro", 0.09f, 0.026f, 0.04f, 0.05f, "flowLayoutPanel1");
+
+            // Colocando os Ouvintes (LISTENERS) dos botões 
+            form.Controls.Find("salvaCadastro", true)[0].Click += InsereDados;
 
         }
 
@@ -114,7 +122,7 @@ namespace Lanchonete_T92
             campo.Font = new Font(FontFamily.GenericSansSerif, 14);
             //campo.BorderStyle = BorderStyle.None;
 
-            form.Controls.Find( onde, true)[0].Controls.Add(campo);
+            form.Controls.Find(onde, true)[0].Controls.Add(campo);
 
             // esquerda, cima, direita, embaixo
             form.Controls.Find(name, true)[0].Margin = new Padding(CalculaTamanho(esq), CalculaTamanho(topo), 0, 0);
@@ -129,6 +137,14 @@ namespace Lanchonete_T92
             botao.Size = new Size(CalculaTamanho(larg), CalculaTamanho(alt));
             botao.Margin = new Padding(CalculaTamanho(esq), CalculaTamanho(topo), 0, 0);
 
+            botao.BackColor = Color.Transparent;
+            botao.FlatStyle = FlatStyle.Flat;
+            botao.FlatAppearance.BorderSize = 0;
+            botao.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            botao.FlatAppearance.MouseOverBackColor = Color.Transparent;
+
+            botao.Cursor = Cursors.Hand;
+
             form.Controls.Find(onde, true)[0].Controls.Add(botao);
 
         }
@@ -141,7 +157,7 @@ namespace Lanchonete_T92
             foto.Margin = new Padding(CalculaTamanho(esq), CalculaTamanho(topo), 0, 0);
             foto.BackColor = Color.Red;
 
-            form.Controls.Find( onde, true)[0].Controls.Add(foto);
+            form.Controls.Find(onde, true)[0].Controls.Add(foto);
         }
 
         void CriaTabela()
@@ -158,7 +174,10 @@ namespace Lanchonete_T92
              */
             DataGridView tabela = new DataGridView();
             tabela.Name = "tabelaUsuarios";
-            tabela.Width = CalculaTamanho(0.5f);
+            tabela.Width = CalculaTamanho(0.62f);
+            tabela.Margin = new Padding(CalculaTamanho(0.025f), CalculaTamanho(0.037f), 0, 0);
+
+            form.Controls.Find("flowLayoutPanel1", true)[0].Controls.Add(tabela);
 
             // A tabela é alimentada por um vetor
             //string[] nomes = { "Felipe", "nome2", "nome3", "nome4" };
@@ -174,7 +193,6 @@ namespace Lanchonete_T92
 
             // fazendo a SELECT no Banco
             string SQL = "SELECT usuarios.id_usuario, usuarios.login, enderecos.logradouro, telefones.telefone, emails.email FROM usuarios INNER JOIN enderecos ON usuarios.id_usuario = enderecos.usuarios_id_usuario INNER JOIN telefones ON usuarios.id_usuario = telefones.usuarios_id_usuario INNER JOIN emails ON usuarios.id_usuario = emails.usuarios_id_usuario ORDER BY id_usuario DESC";
-            
 
             // para rodar o comando se a conexão não existe é criada
             if (conexao == null)
@@ -214,6 +232,9 @@ namespace Lanchonete_T92
                 // colocando os dados na tabela
                 tabela.DataSource = dados;
 
+                // retirando apenas o primeiro registro da coluna login
+                //MessageBox.Show( dados.Tables[0].Rows[0]["login"].ToString() );
+
             }
             catch (Exception erro)
             {
@@ -226,7 +247,7 @@ namespace Lanchonete_T92
             // nomeando as colunas do DataGridView
             //tabela.Columns[0].Name = "Nome";
 
-            form.Controls.Find("flowLayoutPanel1", true)[0].Controls.Add(tabela);
+
         }
 
         void OrganizaCampos()
@@ -238,9 +259,145 @@ namespace Lanchonete_T92
             organiza.Width = CalculaTamanho(0.7f);
             organiza.Height = CalculaTamanho(0.1f);
 
-            organiza.Margin = new Padding(0, CalculaTamanho(0.04f), 0, 0);
+            organiza.Margin = new Padding(0, CalculaTamanho(0.001f), 0, 0);
 
             form.Controls.Find("flowLayoutPanel1", true)[0].Controls.Add(organiza);
+        }
+
+        void InsereDados(object objeto, EventArgs evento)
+        {
+            try
+            {
+                // campos da tela
+                string usuario = form.Controls.Find("emailTxt", true)[0].Text;
+                string nome = form.Controls.Find("nomeTxt", true)[0].Text;
+                string sobrenome = form.Controls.Find("sobrenomeTxt", true)[0].Text;
+                string cpf = form.Controls.Find("cpfTxt", true)[0].Text;
+                string nascimento = form.Controls.Find("nascimentoTxt", true)[0].Text;
+
+                string tipo = form.Controls.Find("tipoTxt", true)[0].Text;
+                string logradouro= form.Controls.Find("logradouroTxt", true)[0].Text;
+                string numero= form.Controls.Find("numeroTxt", true)[0].Text; 
+                string cep= form.Controls.Find("cepTxt", true)[0].Text;
+                string complemento= form.Controls.Find("complementoTxt", true)[0].Text;
+
+                string pais= "55";
+                string ddd = "11";
+                string telefone= form.Controls.Find("telefoneTxt", true)[0].Text;
+
+                string email= form.Controls.Find("emailTxt", true)[0].Text;
+                string tipo2= form.Controls.Find("tipo2Txt", true)[0].Text;
+                string senhaLimpa = GeraSenha();
+
+                // Etapas do CRUD - Inserir, Ler, Atualizar e Apagar - manutenção
+                // 1º Conectar ao banco ( ConectaBanco() já fez isso )
+                // 2º Escrever o SQL
+                string SQL = " INSERT INTO usuarios ( login, senha ) VALUES ( '" + usuario + "', AES_ENCRYPT( '" + senhaLimpa + "', '" + Config.chaveCrypto + "') ) ";
+
+                // traz o último auto incremento criado na tabela usuários que é nossa PK usada como FK nas demais tabelas
+                string sqlFK = " SELECT LAST_INSERT_ID()";
+                // prepara o sql quando é um SELECT
+                MySqlDataAdapter rodaFK = new MySqlDataAdapter(sqlFK, conexao);
+                // organizamos o retorno em um DataSet
+                DataSet dadosFK = new DataSet();
+                // preenchendo o DataSet
+                rodaFK.Fill( dadosFK );
+                // extraimos o valor encontrado
+                string pegaFK = dadosFK.Tables[0].Rows[0].ToString();
+
+                string SQL2 = " INSERT INTO cadastros ( nome, sobrenome, cpf, nascimento, usuarios_id_usuario ) VALUES ( '"+ nome +"', '"+ sobrenome +"', '"+ cpf +"', '"+ nascimento +"', ( SELECT LAST_INSERT_ID() ) )";
+
+                string SQL3 = " INSERT INTO enderecos ( tipo, logradouro, numero, cep, complemento, usuarios_id_usuario ) VALUES ( '1', '" + logradouro +"', '" + numero +"', '" + cep +"', '" + complemento +"', ( SELECT LAST_INSERT_ID() ) )";
+
+                string SQL4 = " INSERT INTO telefones ( pais, ddd, telefone, tipo, usuarios_id_usuario ) VALUES ( '55', '11', '"+ telefone +"', '"+ tipo +"', ( SELECT LAST_INSERT_ID() ) )";
+
+                string SQL5 = " INSERT INTO emails ( email, usuarios_id_usuario ) VALUES ( '"+ email + "', ( SELECT LAST_INSERT_ID() ))";
+
+                // 3º Montar o código
+                MySqlCommand roda = new MySqlCommand(SQL, conexao);
+                MySqlCommand roda2 = new MySqlCommand(SQL2, conexao);
+                MySqlCommand roda3 = new MySqlCommand(SQL3, conexao);
+                MySqlCommand roda4 = new MySqlCommand(SQL4, conexao);
+                MySqlCommand roda5 = new MySqlCommand(SQL5, conexao);
+
+                //Se o campo está com valor, foi preenchido
+                if (usuario != "")
+                {
+                    // 4ª Executar o código
+                    roda.ExecuteNonQuery(); // cadastra o usuário PK
+                    // pegue o ID usuáio cadastrado anteriormente FK
+                    roda2.ExecuteNonQuery();
+                    roda3.ExecuteNonQuery();
+                    roda4.ExecuteNonQuery();
+                    roda5.ExecuteNonQuery();
+
+                    MessageBox.Show(" Registro Inserido");
+                    // envia um email com a senha para o funcionário PHP
+                }
+                else
+                {
+                    MessageBox.Show("Preencha os campos obrigatórios");
+                }
+
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao cadastrar. " + erro.ToString());
+            }
+
+        }
+
+        string GeraSenha()
+        {
+            string senha = null;
+
+            //Objeto que sorteará os valores
+            Random valores = new Random();
+            Random numeros = new Random();
+
+            string[] palavras = { "Lorem", "ipsum", "dolor", "sit", "amet" };
+
+            string datas = DateTime.Now.ToString();// pega dia e hora atual
+
+            //MessageBox.Show(datas);
+
+            //MessageBox.Show( "" + palavras[ valores.Next( palavras.Length ) ] );
+
+            senha = "Lanchonete" + palavras[valores.Next(palavras.Length)] + numeros.Next(1, 1000);
+
+            //MessageBox.Show(senha);
+
+            return senha;
+        }
+
+
+
+
+        void MostraID(object objeto, DataGridViewCellEventArgs evento)
+        {
+            // pega o id clicado da linha clicada
+            int id = evento.RowIndex;
+
+            int idFunc = (int)tab.Rows[id].Cells[0].Value;
+
+            // Editando os botões
+            //MessageBoxManager.Cancel = "Cancelar";
+            //MessageBoxManager.Yes = "Editar";
+            //MessageBoxManager.No = "Apagar";
+            //MessageBoxManager.Register();
+
+            DialogResult resposta = MessageBox.Show("O que deseja fazer?", "CRUD", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+            if (resposta == DialogResult.Yes)
+            {
+                MessageBox.Show("Escolheu Editar");
+            }
+
+            if (resposta == DialogResult.No)
+            {
+                MessageBox.Show("Escolheu Apagar");
+            }
+
         }
 
 
